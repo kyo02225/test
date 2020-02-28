@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostsController extends Controller
 {
     public function index() {
-        // return "hello";
-        echo "hoge";
+        $posts = Post::latest()->get();
+        // dd($posts->toArray()); 
+        return view('posts.index')->with('posts', $posts);
     }
 }
